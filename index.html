@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PKIN | Parkour Ingolstadt</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">PK<span>IN</span></a>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#highlights">Action</a></li>
+                <li><a href="#the-spot">The Spot</a></li>
+                <li><a href="#training">Training</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <!-- Shown only in mobile menu -->
+                <li class="mobile-only"><a href="#contact">Mitmachen</a></li>
+            </ul>
+            <a href="#contact" class="btn-nav desktop-only">Mitmachen</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="INGOLSTADT">INGOLSTADT</h1>
+            <p>MOVE DIFFERENT • TRAIN HARDER • PKIN</p>
+            <div class="hero-btns">
+                <a href="#highlights" class="btn-primary">Latest Moves</a>
+                <a href="#training" class="btn-outline">Training Info</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="highlights" class="media-section">
+            <h2 class="outline-title">ACTION SNAPS</h2>
+            <div class="media-grid" id="gifContainer"></div>
+        </section>
+
+        <section id="the-spot" class="media-section">
+            <h2 class="outline-title">THE SPOT</h2>
+            <div class="media-grid" id="tourContainer"></div>
+        </section>
+
+        <section id="training" class="training-grid">
+            <div class="train-card">
+                <h3>COMMUNITY</h3>
+                <p>Jeden Tag neue Lines.<br>Lerne von den Besten der Stadt.</p>
+            </div>
+            <div class="train-card highlight">
+                <h3>WORKOUT</h3>
+                <p>Kraft, Balance & Flow.<br>Parkour ist Ganzkörpertraining.</p>
+            </div>
+            <div class="train-card">
+                <h3>PROGRESS</h3>
+                <p>Vom ersten Jump<br>bis zum Full Twist.</p>
+            </div>
+        </section>
+
+        <section id="gallery" class="media-section">
+            <h2 class="outline-title">GALLERY</h2>
+            <div class="media-grid" id="photoContainer"></div>
+        </section>
+
+        <section id="video-section" class="media-section">
+            <h2 class="outline-title">FULL EDITS</h2>
+            <div class="media-grid" id="videoContainer"></div>
+        </section>
+
+        <section id="contact" class="media-section">
+            <h2 class="outline-title">MITMACHEN</h2>
+            <div class="contact-grid">
+                <div class="train-card">
+                    <h3>LUST AUF TRAINING?</h3>
+                    <p>Komm einfach vorbei oder schreib uns.<br><br>
+                    <strong>SPOT:</strong> Elisabethstraße 9b, 85051 Ingolstadt<br>
+                    <strong>ZEIT:</strong> Jeden Samstag, 12:00 Uhr<br>
+                    <strong>INFO:</strong> +49 160 1264163</p>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="text" id="subject" class="contact-input" placeholder="Betreff" required>
+                    <textarea id="message" rows="5" class="contact-input" placeholder="Deine Nachricht an uns..." required></textarea>
+                    <button type="submit" class="btn-primary contact-btn">Nachricht senden</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">PK<span>IN</span></a>
+                <p>Die Parkour & Freerunning Community in Ingolstadt.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navigieren</h4>
+                <ul>
+                    <li><a href="#highlights">Action</a></li>
+                    <li><a href="#the-spot">The Spot</a></li>
+                    <li><a href="#training">Training</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="impressum.html">Impressum</a></li>
+                    <li><a href="datenschutz.html">Datenschutz</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
