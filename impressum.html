@@ -2,12 +2,14 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0a">
     <title>Impressum | PKIN</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Navbar with "scrolled" class so it immediately has a background -->
     <nav id="navbar" class="scrolled">
         <div class="nav-container">
             <a href="index.html" class="logo">PK<span>IN</span></a>
@@ -15,38 +17,53 @@
         </div>
     </nav>
 
-    <div class="legal-container">
+    <main class="legal-container">
         <h1>Impressum</h1>
         
-        <h2>Angaben gemäß § 5 TMG</h2>
-        <p>
-            SIMSON VENTER<br>
-            REUSSSTRASSE 9A<br>
-            85049 INGOLSTADT
-        </p>
+        <section class="legal-section">
+            <h2>Angaben gemäß § 5 TMG</h2>
+            <p>
+                SIMSON VENTER<br>
+                REUSSSTRASSE 9A<br>
+                85049 INGOLSTADT
+            </p>
+        </section>
 
-        <h2>Kontakt</h2>
-        <p>
-            Telefon: +49 160 1264163<br>
-            E-Mail: kontakt@parkour-in.de
-        </p>
+        <section class="legal-section">
+            <h2>Kontakt</h2>
+            <p>
+                Telefon: +49 160 1264163<br>
+                E-Mail: <a href="mailto:kontakt@parkour-in.de">kontakt@parkour-in.de</a>
+            </p>
+        </section>
 
-        <h2>Redaktionell verantwortlich</h2>
-        <p>
-            FILIP ROTIM<br>
-            RICHARD-STRAUSS-STRASSE 36<br>
-            85057 INGOLSTADT
-        </p>
+        <section class="legal-section">
+            <h2>Redaktionell verantwortlich</h2>
+            <p>
+                FILIP ROTIM<br>
+                RICHARD-STRAUSS-STRASSE 36<br>
+                85057 INGOLSTADT
+            </p>
+        </section>
 
-        <h2>EU-Streitschlichtung</h2>
-        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" style="color:var(--primary)">https://ec.europa.eu/consumers/odr/</a>.<br> Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+        <section class="legal-section">
+            <h2>EU-Streitschlichtung</h2>
+            <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <br>
+                <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br> 
+                Unsere E-Mail-Adresse finden Sie oben im Impressum.
+            </p>
+        </section>
 
-        <h2>Verbraucher­streit­beilegung/Universal-Schlichtungs­stelle</h2>
-        <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-    </div>
+        <section class="legal-section">
+            <h2>Verbraucher­streit­beilegung</h2>
+            <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+        </section>
+    </main>
 
-    <footer>
-        <p>&copy; 2026 - PARKOUR INGOLSTADT</p>
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 - PKIN PARKOUR INGOLSTADT</p>
+        </div>
     </footer>
 </body>
 </html>
