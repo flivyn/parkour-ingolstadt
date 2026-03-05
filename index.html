@@ -2,28 +2,50 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PKIN | Parkour Ingolstadt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0a"> <!-- Matches Android Chrome UI to your dark theme -->
+    
+    <!-- SEO Meta Tags -->
+    <title>PKIN | Parkour & Freerunning Training in Ingolstadt</title>
+    <meta name="description" content="Lust auf Parkour in Ingolstadt? PKIN ist die Community für Parkour, Freerunning & Bewegung. Training jeden Samstag, 12 Uhr in der Elisabethstraße 9b. Komm vorbei!">
+    <meta name="keywords" content="Parkour Ingolstadt, Freerunning Ingolstadt, PKIN, Sport Ingolstadt, Parkour Training">
+    <link rel="canonical" href="https://parkour-in.de/" />
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsClub",
+      "name": "PKIN Parkour Ingolstadt",
+      "url": "https://parkour-in.de/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Elisabethstraße 9b",
+        "addressLocality": "Ingolstadt",
+        "postalCode": "85051",
+        "addressCountry": "DE"
+      },
+      "telephone": "+491601264163",
+      "description": "Die Parkour & Freerunning Community in Ingolstadt."
+    }
+    </script>
 </head>
 <body>
 
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">PK<span>IN</span></a>
-            
-            <!-- Mobile Menu Toggle -->
-            <div class="menu-toggle" id="mobile-menu">
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">
                 <i class="fas fa-bars"></i>
             </div>
-
             <ul class="nav-links" id="nav-links">
                 <li><a href="#highlights">Action</a></li>
                 <li><a href="#the-spot">The Spot</a></li>
                 <li><a href="#training">Training</a></li>
                 <li><a href="#gallery">Gallery</a></li>
-                <!-- Shown only in mobile menu -->
                 <li class="mobile-only"><a href="#contact">Mitmachen</a></li>
             </ul>
             <a href="#contact" class="btn-nav desktop-only">Mitmachen</a>
@@ -102,9 +124,9 @@
                 <a href="#" class="logo">PK<span>IN</span></a>
                 <p>Die Parkour & Freerunning Community in Ingolstadt.</p>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/parkour_ingolstadt/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://google.com/"><i class="fab fa-youtube"></i></a>
+                    <a href="https://google.com/"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             <div class="footer-links">
@@ -125,7 +147,11 @@
                 </ul>
             </div>
         </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PKIN Parkour Ingolstadt.</p>
+        </div>
     </footer>
+    
     <script src="script.js"></script>
 </body>
 </html>

@@ -36,7 +36,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
 }
 
 body {
@@ -45,11 +44,17 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-/* SCROLL FIX: Keeps navbar from covering section titles when anchored */
+/* Utility Class for Mobile Scroll Lock */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* SCROLL FIX */
 section {
-    scroll-margin-top: 120px; 
+    scroll-margin-top: 100px; 
 }
 
 /* NAVIGATION */
@@ -59,12 +64,13 @@ section {
     width: 100%;
     padding: 25px;
     z-index: 1000;
-    transition: 0.4s;
+    transition: all 0.4s ease;
 }
 
 #navbar.scrolled {
-    background: rgba(0,0,0,0.9);
+    background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 15px 25px;
     border-bottom: 1px solid rgba(207, 255, 4, 0.2);
 }
@@ -83,6 +89,8 @@ section {
     text-decoration: none;
     color: white;
     letter-spacing: 2px;
+    position: relative;
+    z-index: 1001; /* Keeps logo above mobile menu overlay */
 }
 
 .logo span { color: var(--primary); }
@@ -101,6 +109,7 @@ section {
     font-size: 0.85rem;
     letter-spacing: 1px;
     transition: 0.3s;
+    padding: 10px 0; /* Better touch target */
 }
 
 .nav-links a:hover { color: var(--primary); }
@@ -108,37 +117,45 @@ section {
 .btn-nav {
     background: var(--primary);
     color: black;
-    padding: 8px 20px;
+    padding: 10px 22px;
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     border-radius: 2px;
+    transition: 0.3s;
+}
+
+.btn-nav:hover {
+    box-shadow: 0 4px 15px rgba(207, 255, 4, 0.3);
 }
 
 /* HERO SECTION */
 .hero {
     height: 100vh;
+    height: 100dvh; /* Mobile viewport height fix */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
                 url('media/tours/DSC00783.jpg') center/cover no-repeat;
     background-attachment: fixed;
+    padding: 0 20px;
 }
 
 .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4rem, 18vw, 12rem);
+    font-size: clamp(3.5rem, 15vw, 12rem);
     line-height: 0.85;
 }
 
 .hero p {
     font-weight: bold;
-    letter-spacing: 5px;
-    margin-top: 10px;
+    letter-spacing: clamp(2px, 2vw, 5px);
+    margin-top: 15px;
     color: var(--primary);
+    font-size: clamp(0.8rem, 3vw, 1.2rem);
 }
 
 .hero-btns {
@@ -146,6 +163,7 @@ section {
     display: flex;
     gap: 20px;
     justify-content: center;
+    flex-wrap: wrap; /* Helps smaller screens */
 }
 
 .btn-primary, .btn-outline {
@@ -155,11 +173,14 @@ section {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: 0.3s;
+    border-radius: 2px;
+    display: inline-block;
 }
 
-.btn-primary { background: var(--primary); color: black; }
-.btn-outline { border: 2px solid white; color: white; }
+.btn-primary { background: var(--primary); color: black; border: 2px solid var(--primary); }
+.btn-outline { background: transparent; border: 2px solid white; color: white; }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(207, 255, 4, 0.3); }
+.btn-outline:hover { background: white; color: black; transform: translateY(-3px); }
 
 /* GRID SYSTEM */
 .container {
@@ -172,7 +193,7 @@ section {
 
 .outline-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3rem, 8vw, 5rem);
+    font-size: clamp(2.5rem, 8vw, 5rem);
     color: transparent;
     -webkit-text-stroke: 1px var(--primary);
     margin-bottom: 40px;
@@ -181,7 +202,7 @@ section {
 
 .media-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 20px;
 }
 
@@ -191,17 +212,20 @@ section {
     overflow: hidden;
     position: relative;
     border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 4px;
 }
 
 .media-item img {
     width: 100%; height: 100%; object-fit: cover;
     transition: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    filter: grayscale(30%);
+    filter: grayscale(20%);
 }
 
-.media-item:hover img {
-    transform: scale(1.08);
-    filter: grayscale(0%);
+@media (hover: hover) {
+    .media-item:hover img {
+        transform: scale(1.08);
+        filter: grayscale(0%);
+    }
 }
 
 /* PLACEHOLDERS */
@@ -228,6 +252,8 @@ section {
     gap: 0;
     margin-bottom: 120px;
     border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .train-card {
@@ -279,22 +305,25 @@ section {
     border: 1px solid #333;
     color: white;
     font-family: 'Inter', sans-serif;
-    font-size: 1rem;
+    font-size: 16px; /* SCROLL FIX: Needs to be >=16px to prevent iOS auto-zoom */
     width: 100%;
     resize: vertical;
+    border-radius: 4px;
+    transition: 0.3s;
 }
 
 .contact-input:focus {
     outline: none;
     border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(207, 255, 4, 0.1);
 }
 
 .contact-btn {
     cursor: pointer;
-    border: none;
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     margin-top: auto;
+    border-radius: 4px;
 }
 
 /* MODERN FOOTER */
@@ -302,7 +331,6 @@ section {
     background: #050505;
     padding: 80px 20px 30px;
     border-top: 1px solid rgba(207, 255, 4, 0.1);
-    margin-top: 50px;
 }
 
 .footer-container {
@@ -331,8 +359,8 @@ section {
 }
 
 .social-icons a {
-    width: 40px;
-    height: 40px;
+    width: 44px; /* Mobile touch target min size */
+    height: 44px;
     background: var(--gray);
     display: flex;
     align-items: center;
@@ -342,6 +370,7 @@ section {
     text-decoration: none;
     transition: 0.3s;
     border: 1px solid rgba(255,255,255,0.1);
+    font-size: 1.1rem;
 }
 
 .social-icons a:hover {
@@ -358,19 +387,16 @@ section {
     letter-spacing: 1px;
 }
 
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links ul li {
-    margin-bottom: 12px;
-}
+.footer-links ul { list-style: none; }
+.footer-links ul li { margin-bottom: 12px; }
 
 .footer-links ul li a {
     color: #ccc;
     text-decoration: none;
     font-size: 0.9rem;
     transition: 0.3s;
+    padding: 5px 0;
+    display: inline-block; /* Improves touch target area */
 }
 
 .footer-links ul li a:hover {
@@ -383,9 +409,7 @@ section {
     margin: 60px auto 0;
     padding-top: 30px;
     border-top: 1px solid rgba(255,255,255,0.05);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
 }
 
 .footer-bottom p {
@@ -395,149 +419,75 @@ section {
     letter-spacing: 1px;
 }
 
-/* LEGAL PAGES STYLING */
-.legal-container {
-    max-width: 800px;
-    margin: 120px auto 60px;
-    padding: 0 20px;
-    line-height: 1.8;
-}
-
-.legal-container h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 4rem;
-    color: var(--primary);
-    margin-bottom: 30px;
-}
-
-.legal-container h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    margin-top: 40px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid var(--primary);
-    display: inline-block;
-}
-
-.legal-container p, .legal-container ul {
-    margin-bottom: 20px;
-    color: #ccc;
-}
-
-.legal-links {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.legal-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 0.8rem;
-    opacity: 0.5;
-}
-
-.legal-links a:hover {
-    opacity: 1;
-    color: var(--primary);
-}
-
 /* --- MOBILE MENU UTILITIES --- */
 .menu-toggle {
     display: none;
     color: white;
     font-size: 1.8rem;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.3s ease;
+    z-index: 1001; /* Keeps toggle above menu */
+    width: 44px; height: 44px;
+    align-items: center;
+    justify-content: flex-end;
 }
 
-.menu-toggle:hover {
-    color: var(--primary);
-}
-
-.mobile-only {
-    display: none;
-}
+.mobile-only { display: none; }
 
 /* --- COMPREHENSIVE MOBILE RESPONSIVENESS --- */
 @media (max-width: 900px) {
     
-    /* Show Hamburger, Hide standard Nav button */
-    .menu-toggle {
-        display: block;
-    }
-    
-    .desktop-only {
-        display: none;
-    }
-    
-    .mobile-only {
-        display: block;
-    }
+    .menu-toggle { display: flex; }
+    .desktop-only { display: none; }
+    .mobile-only { display: block; }
 
-    /* Fullscreen Mobile Menu Overlay */
+    /* Fullscreen Mobile Menu Overlay Fixes */
     .nav-links {
         position: fixed;
-        top: 80px; /* Right below the navbar */
-        left: -100%; /* Hidden off-screen by default */
+        top: 0; 
+        left: -100%; 
         width: 100%;
-        height: calc(100vh - 80px);
+        height: 100dvh; /* Dynamic Viewport for iOS */
         background: rgba(10, 10, 10, 0.98);
         backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 40px;
-        transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        gap: 30px;
+        transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        z-index: 999;
+        padding-top: 60px; /* Offset for logo/hamburger */
     }
 
-    /* Class added via JS when menu opens */
-    .nav-links.active {
-        left: 0;
-    }
+    .nav-links.active { left: 0; }
 
     .nav-links a {
-        font-size: 1.5rem;
+        font-size: 1.8rem; /* Larger for touch */
+        font-family: 'Bebas Neue', sans-serif; /* Stylistic choice for big mobile menus */
+        letter-spacing: 2px;
     }
 
-    /* Hero Section Fixes */
-    .hero h1 {
-        font-size: clamp(3.5rem, 15vw, 6rem);
-    }
+    /* Hero Section Mobile Fixes */
+    .hero { background-attachment: scroll; } /* Mobile browsers often struggle with fixed bg */
+    .hero-btns { flex-direction: column; width: 100%; }
+    .hero-btns a { width: 100%; text-align: center; }
+
+    /* Layout Spacing Adjustments */
+    .container { padding: 60px 20px 20px; }
+    .media-section { margin-bottom: 70px; }
+    .training-grid { margin-bottom: 70px; }
     
-    .hero-btns {
-        flex-direction: column;
-        padding: 0 20px;
-    }
-    
-    .hero-btns a {
-        width: 100%;
-        text-align: center;
-    }
+    .outline-title { text-align: center; }
 
-    /* Grid Adjustments for smaller screens */
-    .media-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
+    /* Grid Adjustments */
+    .media-grid { grid-template-columns: 1fr; } /* 1 column is best for mobile content viewing */
+    .contact-grid { grid-template-columns: 1fr; gap: 30px; }
 
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .outline-title {
-        font-size: clamp(2.5rem, 8vw, 4rem);
-        margin-bottom: 25px;
-        text-align: center;
-    }
-
-    .container {
-        padding: 60px 20px;
-    }
+    /* Touch-friendly padding */
+    .train-card { padding: 40px 20px; text-align: center; }
 }
 
-/* Footer mobile adjustments */
 @media (max-width: 768px) {
     .footer-container {
         grid-template-columns: 1fr;
@@ -545,17 +495,71 @@ section {
         gap: 40px;
     }
     
-    .footer-brand p {
-        margin: 0 auto 25px;
-    }
-    
-    .social-icons {
-        justify-content: center;
-    }
-    
-    .footer-bottom {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
+    .footer-brand p { margin: 0 auto 25px; }
+    .social-icons { justify-content: center; }
+}
+
+/* =========================================
+   LEGAL PAGES STYLING (Impressum / Datenschutz)
+   ========================================= */
+
+   .legal-container {
+    max-width: 800px;
+    margin: 140px auto 80px; /* Top margin accounts for the fixed navbar */
+    padding: 0 20px;
+    line-height: 1.8;
+}
+
+/* Fluid Typography: Scales down beautifully on smaller screens */
+.legal-container h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 10vw, 4.5rem); 
+    color: var(--primary);
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.legal-section {
+    margin-bottom: 45px;
+}
+
+.legal-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+    padding-bottom: 5px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.legal-section p {
+    color: #cccccc;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.legal-section strong {
+    color: white;
+}
+
+/* Link Fix: Prevents long URLs from overflowing off the screen on mobile */
+.legal-section a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: 0.3s;
+    word-break: break-all; /* Critical for mobile layout protection */
+    font-weight: bold;
+}
+
+.legal-section a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Short Page Fix: Pushes the footer to the bottom on short screens */
+.legal-container {
+    min-height: 60vh;
 }
